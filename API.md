@@ -1,26 +1,26 @@
 # 📚 Dawly Backend API Documentation
 
-## Обзор
+## Overview
 
-Dawly Backend предоставляет REST API и GraphQL API для управления контентом. API построен на Strapi CMS и поддерживает аутентификацию, авторизацию и различные типы контента.
+Dawly Backend provides REST API and GraphQL API for content management. The API is built on Strapi CMS and supports authentication, authorization, and various content types.
 
-## 🔗 Базовый URL
+## 🔗 Base URL
 
 ```
 http://localhost:1337
 ```
 
-## 🔐 Аутентификация
+## 🔐 Authentication
 
 ### JWT Token
 
-Для защищенных endpoints требуется JWT токен в заголовке:
+Protected endpoints require a JWT token in the header:
 
 ```
 Authorization: Bearer YOUR_JWT_TOKEN
 ```
 
-### Получение токена
+### Get Token
 
 ```bash
 POST /api/auth/local
@@ -34,105 +34,105 @@ Content-Type: application/json
 
 ## 📄 REST API
 
-### Статьи (Articles)
+### Articles
 
-#### Получить все статьи
+#### Get all articles
 ```bash
 GET /api/articles
 ```
 
-#### Получить статью по ID
+#### Get article by ID
 ```bash
 GET /api/articles/:id
 ```
 
-#### Создать статью
+#### Create article
 ```bash
 POST /api/articles
 Content-Type: application/json
 
 {
   "data": {
-    "title": "Заголовок статьи",
-    "content": "Содержание статьи",
+    "title": "Article Title",
+    "content": "Article content",
     "publishedAt": "2025-01-21T00:00:00.000Z"
   }
 }
 ```
 
-#### Обновить статью
+#### Update article
 ```bash
 PUT /api/articles/:id
 Content-Type: application/json
 
 {
   "data": {
-    "title": "Обновленный заголовок"
+    "title": "Updated title"
   }
 }
 ```
 
-#### Удалить статью
+#### Delete article
 ```bash
 DELETE /api/articles/:id
 ```
 
-### Страницы (Pages)
+### Pages
 
-#### Получить все страницы
+#### Get all pages
 ```bash
 GET /api/pages
 ```
 
-#### Получить страницу по slug
+#### Get page by slug
 ```bash
 GET /api/pages?filters[slug][$eq]=about
 ```
 
-### Проекты (Projects)
+### Projects
 
-#### Получить все проекты
+#### Get all projects
 ```bash
 GET /api/projects
 ```
 
-#### Получить проект с изображениями
+#### Get project with images
 ```bash
 GET /api/projects?populate=*
 ```
 
-### Услуги (Services)
+### Services
 
-#### Получить все услуги
+#### Get all services
 ```bash
 GET /api/services
 ```
 
-## 🔍 Фильтрация и сортировка
+## 🔍 Filtering and Sorting
 
-### Фильтрация
+### Filtering
 ```bash
 GET /api/articles?filters[title][$contains]=javascript
 GET /api/projects?filters[category][$eq]=web
 ```
 
-### Сортировка
+### Sorting
 ```bash
 GET /api/articles?sort=createdAt:desc
 GET /api/projects?sort=title:asc
 ```
 
-### Пагинация
+### Pagination
 ```bash
 GET /api/articles?pagination[page]=1&pagination[pageSize]=10
 ```
 
-### Поля
+### Fields
 ```bash
 GET /api/articles?fields=title,content
 ```
 
-### Популяция связей
+### Populate relations
 ```bash
 GET /api/articles?populate=*
 GET /api/projects?populate=images,category
@@ -145,9 +145,9 @@ GET /api/projects?populate=images,category
 POST /graphql
 ```
 
-### Примеры запросов
+### Query Examples
 
-#### Получить все статьи
+#### Get all articles
 ```graphql
 query {
   articles {
@@ -163,7 +163,7 @@ query {
 }
 ```
 
-#### Получить статью с SEO
+#### Get article with SEO
 ```graphql
 query {
   article(id: 1) {
@@ -181,7 +181,7 @@ query {
 }
 ```
 
-#### Получить проекты с изображениями
+#### Get projects with images
 ```graphql
 query {
   projects {
@@ -203,9 +203,9 @@ query {
 }
 ```
 
-## 📊 Медиа файлы
+## 📊 Media Files
 
-### Загрузка файла
+### Upload file
 ```bash
 POST /api/upload
 Content-Type: multipart/form-data
@@ -213,42 +213,42 @@ Content-Type: multipart/form-data
 file: [binary]
 ```
 
-### Получить файл
+### Get file
 ```bash
 GET /uploads/:filename
 ```
 
-## 🔧 Утилиты
+## 🔧 Utilities
 
 ### Health Check
 ```bash
 GET /_health
 ```
 
-### Информация о системе
+### System Info
 ```bash
 GET /api/info
 ```
 
-## 📝 Коды ответов
+## 📝 Response Codes
 
-- `200` - Успешный запрос
-- `201` - Ресурс создан
-- `400` - Неверный запрос
-- `401` - Не авторизован
-- `403` - Доступ запрещен
-- `404` - Ресурс не найден
-- `500` - Внутренняя ошибка сервера
+- `200` - Successful request
+- `201` - Resource created
+- `400` - Bad request
+- `401` - Unauthorized
+- `403` - Forbidden
+- `404` - Resource not found
+- `500` - Internal server error
 
-## 🚀 Примеры использования
+## 🚀 Usage Examples
 
 ### JavaScript (Fetch)
 ```javascript
-// Получить все статьи
+// Get all articles
 const response = await fetch('http://localhost:1337/api/articles');
 const articles = await response.json();
 
-// Создать статью
+// Create article
 const newArticle = await fetch('http://localhost:1337/api/articles', {
   method: 'POST',
   headers: {
@@ -257,8 +257,8 @@ const newArticle = await fetch('http://localhost:1337/api/articles', {
   },
   body: JSON.stringify({
     data: {
-      title: 'Новая статья',
-      content: 'Содержание'
+      title: 'New Article',
+      content: 'Content'
     }
   })
 });
@@ -266,36 +266,36 @@ const newArticle = await fetch('http://localhost:1337/api/articles', {
 
 ### cURL
 ```bash
-# Получить все проекты
+# Get all projects
 curl -X GET "http://localhost:1337/api/projects"
 
-# Создать услугу
+# Create service
 curl -X POST "http://localhost:1337/api/services" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -d '{
     "data": {
-      "title": "Веб-разработка",
-      "description": "Создание современных веб-сайтов",
+      "title": "Web Development",
+      "description": "Creating modern websites",
       "price": 50000
     }
   }'
 ```
 
-## 🔒 Безопасность
+## 🔒 Security
 
-- Все API endpoints защищены CORS
-- JWT токены имеют ограниченное время жизни
-- Пароли хешируются с использованием bcrypt
-- Rate limiting применяется к публичным endpoints
+- All API endpoints are protected with CORS
+- JWT tokens have limited lifetime
+- Passwords are hashed using bcrypt
+- Rate limiting is applied to public endpoints
 
-## 📈 Мониторинг
+## 📈 Monitoring
 
-- Логирование всех запросов
-- Метрики производительности
-- Мониторинг ошибок
+- Request logging
+- Performance metrics
+- Error monitoring
 - Health check endpoints
 
 ---
 
-**Dawly Backend API** - часть экосистемы Dawly 
+**Dawly Backend API** - part of the Dawly ecosystem 

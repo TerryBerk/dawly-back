@@ -1,135 +1,135 @@
 # 🚀 Dawly Backend
 
-Backend API для проекта Dawly, построенный на Strapi CMS.
+Backend API for the Dawly project, built on Strapi CMS.
 
-## 📋 Описание
+## 📋 Description
 
-Dawly Backend - это серверная часть приложения, которая предоставляет REST API и GraphQL API для управления контентом. Построен на Strapi CMS с поддержкой TypeScript.
+Dawly Backend is the server-side application that provides REST API and GraphQL API for content management. Built on Strapi CMS with TypeScript support.
 
-## 🛠 Технологии
+## 🛠 Technologies
 
 - **Strapi** - Headless CMS
-- **TypeScript** - Типизированный JavaScript
-- **Node.js** - Серверная среда выполнения
-- **PostgreSQL** - База данных (настраивается)
+- **TypeScript** - Typed JavaScript
+- **Node.js** - Server runtime environment
+- **PostgreSQL** - Database (configurable)
 
-## 📁 Структура проекта
+## 📁 Project Structure
 
 ```
 dawly-back/
-├── config/           # Конфигурационные файлы
+├── config/           # Configuration files
 ├── src/
-│   ├── api/         # API endpoints и content types
-│   │   ├── article/ # Статьи
-│   │   ├── page/    # Страницы
-│   │   ├── project/ # Проекты
-│   │   └── service/ # Услуги
-│   ├── components/  # Переиспользуемые компоненты
-│   └── extensions/  # Расширения Strapi
-├── database/        # Миграции и данные БД
-├── public/          # Статические файлы
-└── types/           # TypeScript типы
+│   ├── api/         # API endpoints and content types
+│   │   ├── article/ # Articles
+│   │   ├── page/    # Pages
+│   │   ├── project/ # Projects
+│   │   └── service/ # Services
+│   ├── components/  # Reusable components
+│   └── extensions/  # Strapi extensions
+├── database/        # Database migrations and data
+├── public/          # Static files
+└── types/           # TypeScript types
 ```
 
-## 🚀 Быстрый старт
+## 🚀 Quick Start
 
-### Установка зависимостей
+### Install Dependencies
 
 ```bash
 npm install
 ```
 
-### Настройка окружения
+### Environment Setup
 
-Скопируйте файл `.env.example` в `.env` и настройте переменные окружения:
+Copy the `.env.example` file to `.env` and configure environment variables:
 
 ```bash
 cp .env.example .env
 ```
 
-### Запуск в режиме разработки
+### Development Mode
 
 ```bash
 npm run develop
 ```
 
-Приложение будет доступно по адресу: http://localhost:1337
+The application will be available at: http://localhost:1337
 
-### Админ панель
+### Admin Panel
 
-Админ панель Strapi доступна по адресу: http://localhost:1337/admin
+Strapi admin panel is available at: http://localhost:1337/admin
 
 ## 📚 API
 
 ### REST API
 
-- **Статьи**: `/api/articles`
-- **Страницы**: `/api/pages`
-- **Проекты**: `/api/projects`
-- **Услуги**: `/api/services`
+- **Articles**: `/api/articles`
+- **Pages**: `/api/pages`
+- **Projects**: `/api/projects`
+- **Services**: `/api/services`
 
 ### GraphQL API
 
-GraphQL endpoint доступен по адресу: `/graphql`
+GraphQL endpoint is available at: `/graphql`
 
-## 🔧 Команды
+## 🔧 Commands
 
-### Разработка
+### Development
 
 ```bash
-npm run develop  # Запуск с автоперезагрузкой
-npm run start    # Запуск без автоперезагрузки
-npm run build    # Сборка админ панели
+npm run develop  # Start with auto-reload
+npm run start    # Start without auto-reload
+npm run build    # Build admin panel
 ```
 
-### База данных
+### Database
 
 ```bash
-npm run strapi database:migrate  # Применение миграций
-npm run strapi database:seed     # Заполнение тестовыми данными
+npm run strapi database:migrate  # Apply migrations
+npm run strapi database:seed     # Seed with test data
 ```
 
 ## 📦 Content Types
 
 ### Article
-- Заголовок
-- Содержание
-- SEO метаданные
-- Статус публикации
+- Title
+- Content
+- SEO metadata
+- Publication status
 
 ### Page
-- Заголовок
-- Содержание
-- SEO метаданные
-- Slug для URL
+- Title
+- Content
+- SEO metadata
+- URL slug
 
 ### Project
-- Название проекта
-- Описание
-- Изображения
-- Технологии
-- Ссылки
+- Project name
+- Description
+- Images
+- Technologies
+- Links
 
 ### Service
-- Название услуги
-- Описание
-- Цена
-- Категория
+- Service name
+- Description
+- Price
+- Category
 
-## 🔒 Безопасность
+## 🔒 Security
 
-- JWT аутентификация
-- Роли и разрешения
-- CORS настройки
+- JWT authentication
+- Roles and permissions
+- CORS settings
 - Rate limiting
 
-## 📈 Мониторинг
+## 📈 Monitoring
 
-- Логирование запросов
-- Мониторинг производительности
+- Request logging
+- Performance monitoring
 - Health check endpoints
 
-## 🚀 Деплой
+## 🚀 Deployment
 
 ### Production
 
@@ -145,17 +145,17 @@ docker build -t dawly-back .
 docker run -p 1337:1337 dawly-back
 ```
 
-## 🤝 Вклад в проект
+## 🤝 Contributing
 
-1. Форкните репозиторий
-2. Создайте ветку для новой функции
-3. Внесите изменения
-4. Создайте Pull Request
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Create a Pull Request
 
-## 📄 Лицензия
+## 📄 License
 
 MIT License
 
 ---
 
-**Dawly Backend** - часть экосистемы Dawly
+**Dawly Backend** - part of the Dawly ecosystem
