@@ -1,61 +1,161 @@
-# 🚀 Getting started with Strapi
+# 🚀 Dawly Backend
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+Backend API для проекта Dawly, построенный на Strapi CMS.
 
-### `develop`
+## 📋 Описание
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+Dawly Backend - это серверная часть приложения, которая предоставляет REST API и GraphQL API для управления контентом. Построен на Strapi CMS с поддержкой TypeScript.
+
+## 🛠 Технологии
+
+- **Strapi** - Headless CMS
+- **TypeScript** - Типизированный JavaScript
+- **Node.js** - Серверная среда выполнения
+- **PostgreSQL** - База данных (настраивается)
+
+## 📁 Структура проекта
 
 ```
+dawly-back/
+├── config/           # Конфигурационные файлы
+├── src/
+│   ├── api/         # API endpoints и content types
+│   │   ├── article/ # Статьи
+│   │   ├── page/    # Страницы
+│   │   ├── project/ # Проекты
+│   │   └── service/ # Услуги
+│   ├── components/  # Переиспользуемые компоненты
+│   └── extensions/  # Расширения Strapi
+├── database/        # Миграции и данные БД
+├── public/          # Статические файлы
+└── types/           # TypeScript типы
+```
+
+## 🚀 Быстрый старт
+
+### Установка зависимостей
+
+```bash
+npm install
+```
+
+### Настройка окружения
+
+Скопируйте файл `.env.example` в `.env` и настройте переменные окружения:
+
+```bash
+cp .env.example .env
+```
+
+### Запуск в режиме разработки
+
+```bash
 npm run develop
-# or
-yarn develop
 ```
 
-### `start`
+Приложение будет доступно по адресу: http://localhost:1337
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+### Админ панель
 
+Админ панель Strapi доступна по адресу: http://localhost:1337/admin
+
+## 📚 API
+
+### REST API
+
+- **Статьи**: `/api/articles`
+- **Страницы**: `/api/pages`
+- **Проекты**: `/api/projects`
+- **Услуги**: `/api/services`
+
+### GraphQL API
+
+GraphQL endpoint доступен по адресу: `/graphql`
+
+## 🔧 Команды
+
+### Разработка
+
+```bash
+npm run develop  # Запуск с автоперезагрузкой
+npm run start    # Запуск без автоперезагрузки
+npm run build    # Сборка админ панели
 ```
-npm run start
-# or
-yarn start
+
+### База данных
+
+```bash
+npm run strapi database:migrate  # Применение миграций
+npm run strapi database:seed     # Заполнение тестовыми данными
 ```
 
-### `build`
+## 📦 Content Types
 
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
+### Article
+- Заголовок
+- Содержание
+- SEO метаданные
+- Статус публикации
 
-```
+### Page
+- Заголовок
+- Содержание
+- SEO метаданные
+- Slug для URL
+
+### Project
+- Название проекта
+- Описание
+- Изображения
+- Технологии
+- Ссылки
+
+### Service
+- Название услуги
+- Описание
+- Цена
+- Категория
+
+## 🔒 Безопасность
+
+- JWT аутентификация
+- Роли и разрешения
+- CORS настройки
+- Rate limiting
+
+## 📈 Мониторинг
+
+- Логирование запросов
+- Мониторинг производительности
+- Health check endpoints
+
+## 🚀 Деплой
+
+### Production
+
+```bash
 npm run build
-# or
-yarn build
+npm run start
 ```
 
-## ⚙️ Deployment
+### Docker
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
-
+```bash
+docker build -t dawly-back .
+docker run -p 1337:1337 dawly-back
 ```
-yarn strapi deploy
-```
 
-## 📚 Learn more
+## 🤝 Вклад в проект
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+1. Форкните репозиторий
+2. Создайте ветку для новой функции
+3. Внесите изменения
+4. Создайте Pull Request
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+## 📄 Лицензия
 
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+MIT License
 
 ---
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+**Dawly Backend** - часть экосистемы Dawly

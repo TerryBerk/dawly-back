@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  dawly-back:
+    build: .
+    ports:
+      - "1337:1337"
+    environment:
+      - NODE_ENV=development
+      - DATABASE_CLIENT=postgres
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=dawly_back
+      - DATABASE_USERNAME=strapi
+      - DATABASE_PASSWORD=strapi
+      - DATABASE_SSL=false
+    volumes:
+      - ./public/uploads:/app/public/uploads
+      - ./.tmp:/app/.tmp
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=dawly_back
+      - POSTGRES_USER=strapi
+      - POSTGRES_PASSWORD=strapi
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+volumes:
+  postgres_data: 
