@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "studios",
+  "info": {
+    "singularName": "studio",
+    "pluralName": "studios",
+    "displayName": "Studio",
+    "description": "User studio setup with devices and connections"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "userId": {
+      "type": "string",
+      "required": true
+    },
+    "devices": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::device.device",
+      "inversedBy": "studios"
+    },
+    "connections": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::connection.connection",
+      "mappedBy": "studio"
+    },
+    "layout": {
+      "type": "json",
+      "required": false
+    },
+    "viewport": {
+      "type": "json",
+      "required": false
+    }
+  }
+}

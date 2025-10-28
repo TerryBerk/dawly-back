@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "connections",
+  "info": {
+    "singularName": "connection",
+    "pluralName": "connections",
+    "displayName": "Connection",
+    "description": "Connection between device ports in a studio"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "studio": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::studio.studio",
+      "inversedBy": "connections"
+    },
+    "sourceDeviceId": {
+      "type": "string",
+      "required": true
+    },
+    "sourcePortId": {
+      "type": "string",
+      "required": true
+    },
+    "targetDeviceId": {
+      "type": "string",
+      "required": true
+    },
+    "targetPortId": {
+      "type": "string",
+      "required": true
+    },
+    "cableType": {
+      "type": "enumeration",
+      "enum": [
+        "midi",
+        "audio",
+        "power",
+        "cv",
+        "gate",
+        "clock",
+        "usb",
+        "ethernet"
+      ]
+    },
+    "notes": {
+      "type": "text"
+    },
+    "color": {
+      "type": "string"
+    }
+  }
+}

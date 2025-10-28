@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "devices",
+  "info": {
+    "singularName": "device",
+    "pluralName": "devices",
+    "displayName": "Device",
+    "description": "Music hardware device"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "manufacturer": {
+      "type": "string",
+      "required": true
+    },
+    "model": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "synthesizer",
+        "drum_machine",
+        "audio_interface",
+        "eurorack_module",
+        "controller",
+        "effect",
+        "mixer",
+        "monitor"
+      ],
+      "required": true
+    },
+    "releaseYear": {
+      "type": "integer",
+      "min": 1950,
+      "max": 2100
+    },
+    "description": {
+      "type": "text"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "manualUrl": {
+      "type": "string"
+    },
+    "ports": {
+      "type": "json",
+      "required": false
+    },
+    "tags": {
+      "type": "json"
+    },
+    "studios": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::studio.studio",
+      "inversedBy": "devices"
+    }
+  }
+}
