@@ -1,4 +1,27 @@
 export default ({ env }: { env: any }) => ({
+  'users-permissions': {
+    config: {
+      jwt: {
+        jwtSecret: env('JWT_SECRET'),
+        expiresIn: env('JWT_EXPIRY', '15m'), // Short-lived access token
+      },
+      register: {
+        allowedFields: ['username', 'email', 'password'],
+      },
+      email: {
+        enabled: env.bool('EMAIL_VERIFICATION_ENABLED', false),
+        confirmationRequired: env.bool('EMAIL_CONFIRMATION_REQUIRED', false),
+      },
+      grant: {
+        google: {
+          key: env('GOOGLE_CLIENT_ID'),
+          secret: env('GOOGLE_CLIENT_SECRET'),
+          callback: env('GOOGLE_CALLBACK_URL', `${env('CLIENT_URL')}/api/auth/google/callback`),
+          scope: ['email', 'profile'],
+        },
+      },
+    },
+  },
   graphql: {
     config: {
       endpoint: '/graphql',
