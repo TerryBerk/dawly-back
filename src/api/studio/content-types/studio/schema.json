@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "studios",
+  "info": {
+    "singularName": "studio",
+    "pluralName": "studios",
+    "displayName": "Studio",
+    "description": "Music studio configuration with devices and connections"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": "Studio configuration for React Flow canvas"
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255,
+      "minLength": 1
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 5000
+    },
+    "devices": {
+      "type": "json",
+      "required": true,
+      "description": "Array of device objects with positions and configurations"
+    },
+    "connections": {
+      "type": "json",
+      "required": true,
+      "description": "Array of connection objects between devices"
+    },
+    "layout": {
+      "type": "json",
+      "description": "React Flow layout data (viewport, zoom, etc.)"
+    },
+    "isPublic": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "version": {
+      "type": "integer",
+      "default": 1,
+      "required": true,
+      "min": 1
+    },
+    "thumbnail": {
+      "type": "text",
+      "description": "Base64 thumbnail or URL"
+    },
+    "tags": {
+      "type": "json",
+      "description": "Studio tags for filtering"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "studios"
+    }
+  }
+}
+
